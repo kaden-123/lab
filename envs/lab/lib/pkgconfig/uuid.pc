@@ -1,0 +1,11 @@
+prefix=/home/kadenw/Workspace/lab/envs/lab
+exec_prefix=/home/kadenw/Workspace/lab/envs/lab
+libdir=/home/kadenw/Workspace/lab/envs/lab/lib
+includedir=/home/kadenw/Workspace/lab/envs/lab/include
+
+Name: uuid
+Description: Universally unique id library
+Version: 2.32.1
+Requires:
+Cflags: -I${includedir}/uuid
+Libs: -L${libdir} -luuid
