@@ -1,0 +1,8 @@
+# python dependencies
+envs/
+
+# cache 
+__pycache__/
+
+# checkpoints
+.ipynb_checkpoints
