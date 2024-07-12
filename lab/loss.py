@@ -3,7 +3,7 @@ import math
 from typing import List
 
 def rand_probs(n: int) -> List[float]:
-    """Generates n number of random probabilities from a single event
+    """Generates n > 0 number of random probabilities from a single event
 
     Parameters
     ----------
@@ -15,6 +15,7 @@ def rand_probs(n: int) -> List[float]:
     List[float]
         List of n probabilites that sum up to 1
     """
+    assert n > 0, "n should be above 0"
     cuts = sorted(random.random() for _ in range(n-1))
     return [b-a for a, b in zip([0]+cuts, cuts+[1])]
 
@@ -58,10 +59,9 @@ def cross_entropy(
     if len(Q) != len(P):
         raise ValueError("Distrubitions must have same # of probabilities")
         
-    Q = [max(q, 1^-10) for q in Q]
+    Q = [max(q, 1e-10) for q in Q]
     return -sum( p * math.log(q, 2) for p, q in zip(P, Q))
     
-#calculates KL divergence given P and Q
 def kl_divergence(
         P: List[float],
         Q: List[float],
@@ -83,7 +83,7 @@ def kl_divergence(
     if len(Q) != len(P):
         raise ValueError("Distrubitions must have same # of probabilities")
         
-    Q = [max(q, 1^-10) for q in Q]
-    P = [max(p, 1^-10) for p in P]
+    Q = [max(q, 1e-10) for q in Q]
+    P = [max(p, 1e-10) for p in P]
 
     return sum(p * math.log((p/q),2) for p, q in zip(P, Q))
